@@ -14,17 +14,18 @@ import com.example.spring.security.cloud.model.Coupon;
 import com.example.spring.security.cloud.repo.CouponRepo;
 
 @RestController
+@RequestMapping("/coupons")
 public class CouponController {
     @Autowired
     private CouponRepo couponRepo;
 
-    @PostMapping("/coupons")
+    @PostMapping("")
     public void createCoupon(@RequestBody Coupon coupon) {
         System.out.println("POST MAPPING");
         couponRepo.save(coupon);
     }
 
-    @GetMapping("/coupons")
+    @GetMapping("")
     public List<Coupon> getAllCoupons() {
         // return List.of();
         return couponRepo.findAll();
