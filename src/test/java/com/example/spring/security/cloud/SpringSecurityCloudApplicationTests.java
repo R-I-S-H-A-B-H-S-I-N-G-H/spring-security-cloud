@@ -1,12 +1,8 @@
 package com.example.spring.security.cloud;
 
-import javax.transaction.Transactional;
-
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.context.annotation.Lazy;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
 import com.example.spring.security.cloud.model.Role;
@@ -32,11 +28,12 @@ class SpringSecurityCloudApplicationTests {
 
 	@Test
 	void testt1() {
-		User user = new User("random", "random", "abc", passwordEncoder.encode("abc"));
-		// Role role = new Role("ADMIN");
-		// Rolerepo.save(role);
-		// user.addRole(role);
+		User user = new User("test", "test", "test", passwordEncoder.encode("test"));
+		Role role = new Role();
+		role.setName("ADMIN");
+		Rolerepo.save(role);
 
+		user.addRole(role);
 		repo.save(user);
 
 	}

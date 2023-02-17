@@ -1,8 +1,5 @@
 package com.example.spring.security.cloud.model;
 
-import java.math.BigDecimal;
-import java.time.LocalDate;
-
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;

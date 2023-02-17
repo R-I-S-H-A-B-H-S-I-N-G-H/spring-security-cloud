@@ -13,7 +13,6 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import com.example.spring.security.cloud.security.UserDetailServiceImpl;
 
 @EnableWebSecurity
-
 public class WebSecurityConfigAdapter extends WebSecurityConfigurerAdapter {
     @Autowired
     UserDetailServiceImpl userDetailService;
@@ -27,11 +26,14 @@ public class WebSecurityConfigAdapter extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         http.httpBasic();
 
-        http.csrf().disable().authorizeRequests()
-                .mvcMatchers(HttpMethod.GET, "/coupons")
-                .hasAnyRole("USER", "ADMIN")
-                .mvcMatchers(HttpMethod.POST, "/coupons")
-                .hasRole("ADMIN")
+        http
+                .csrf()
+                .disable()
+                .authorizeRequests()
+                .mvcMatchers(HttpMethod.GET, "/coupons/**")
+                .hasAnyAuthority("USER", "ADMIN")
+                .mvcMatchers(HttpMethod.POST, "/coupons/**")
+                .hasAnyAuthority("ADMIN")
                 .anyRequest().permitAll();
     }
 
