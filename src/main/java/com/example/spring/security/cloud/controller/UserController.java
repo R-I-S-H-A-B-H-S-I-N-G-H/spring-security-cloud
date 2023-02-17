@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.example.spring.security.cloud.dto.UserDto;
 import com.example.spring.security.cloud.model.Role;
 import com.example.spring.security.cloud.model.User;
-import com.example.spring.service.UserService;
+import com.example.spring.security.cloud.service.UserService;
 
 @RestController
 @RequestMapping("/users")

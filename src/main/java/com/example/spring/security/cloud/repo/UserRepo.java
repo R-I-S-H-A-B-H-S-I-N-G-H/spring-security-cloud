@@ -12,5 +12,4 @@ public interface UserRepo extends JpaRepository<User, Long> {
 
     ArrayList<User> findAll();
 
-    User findByName(String name);
 }
