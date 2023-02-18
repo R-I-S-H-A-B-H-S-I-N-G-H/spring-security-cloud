@@ -1,6 +1,9 @@
 package com.example.spring.security.cloud.service;
 
+import java.util.ArrayList;
+
 import org.springframework.beans.factory.annotation.Autowired;
+
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Component;
 
@@ -37,6 +40,20 @@ public class UserService {
 
         userRepo.save(userres);
 
+    }
+
+    public ArrayList<User> getAllUsers() {
+        return userRepo.findAllUsers();
+        // ArrayList<User> resusers = new ArrayList<>();
+        // userRepo.findAll().forEach(ele -> {
+        // User user = new User();
+        // user.setFirstname(ele.getFirstname());
+        // user.setLastname(ele.getLastname());
+        // user.setEmail(ele.getEmail());
+        // resusers.add(user);
+
+        // });
+        // return resusers;
     }
 
 }

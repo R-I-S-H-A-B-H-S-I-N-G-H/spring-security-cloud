@@ -30,9 +30,9 @@ public class WebSecurityConfigAdapter extends WebSecurityConfigurerAdapter {
                 .csrf()
                 .disable()
                 .authorizeRequests()
-                .mvcMatchers(HttpMethod.GET, "/coupons/**")
+                .mvcMatchers(HttpMethod.GET, "/**")
                 .hasAnyAuthority("USER", "ADMIN")
-                .mvcMatchers(HttpMethod.POST, "/coupons/**")
+                .mvcMatchers(HttpMethod.POST, "/**")
                 .hasAnyAuthority("ADMIN")
                 .anyRequest().permitAll();
     }

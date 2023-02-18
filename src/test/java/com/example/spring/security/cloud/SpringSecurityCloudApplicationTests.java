@@ -1,5 +1,7 @@
 package com.example.spring.security.cloud;
 
+import javax.annotation.security.RolesAllowed;
+
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -9,6 +11,8 @@ import com.example.spring.security.cloud.model.Role;
 import com.example.spring.security.cloud.model.User;
 import com.example.spring.security.cloud.repo.RoleRepo;
 import com.example.spring.security.cloud.repo.UserRepo;
+import com.example.spring.security.cloud.service.RoleService;
+import com.example.spring.security.cloud.service.UserService;
 
 @SpringBootTest
 class SpringSecurityCloudApplicationTests {
@@ -18,24 +22,18 @@ class SpringSecurityCloudApplicationTests {
 	}
 
 	@Autowired
-	UserRepo repo;
+	UserService userService;
 
 	@Autowired
-	PasswordEncoder passwordEncoder;
-
-	@Autowired
-	RoleRepo Rolerepo;
+	RoleService roleService;
 
 	@Test
-	void testt1() {
-		User user = new User("test", "test", "test", passwordEncoder.encode("test"));
-		Role role = new Role();
-		role.setName("ADMIN");
-		Rolerepo.save(role);
+	void createAdminUser() {
+		User user = new User("helix", "nebula", "helix", "helix");
+		userService.saveUser(user);
+		Role role = new Role("ADMIN");
+		roleService.createRole(role);
 
-		user.addRole(role);
-		repo.save(user);
-
+		userService.addRole(user, role);
 	}
-
 }
