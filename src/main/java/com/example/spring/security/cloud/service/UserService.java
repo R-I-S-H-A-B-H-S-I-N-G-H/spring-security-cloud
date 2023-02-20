@@ -43,7 +43,9 @@ public class UserService {
     }
 
     public ArrayList<User> getAllUsers() {
-        return userRepo.findAllUsers();
+        ArrayList<User> res = userRepo.findAllUsers();
+        System.out.println(res);
+        return res;
         // ArrayList<User> resusers = new ArrayList<>();
         // userRepo.findAll().forEach(ele -> {
         // User user = new User();

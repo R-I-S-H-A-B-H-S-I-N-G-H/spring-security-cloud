@@ -12,6 +12,9 @@ import javax.persistence.ManyToMany;
 
 import org.springframework.security.core.GrantedAuthority;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 @Entity
 public class Role implements GrantedAuthority {
     @Id
@@ -29,6 +32,7 @@ public class Role implements GrantedAuthority {
     public Role() {
     }
 
+    @JsonBackReference
     public Set<User> getUsers() {
         return users;
     }

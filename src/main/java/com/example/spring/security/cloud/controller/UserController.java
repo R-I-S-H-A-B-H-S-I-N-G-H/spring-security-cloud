@@ -9,12 +9,11 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.example.spring.security.cloud.dto.UserCreateDto;
 import com.example.spring.security.cloud.dto.UserDto;
 import com.example.spring.security.cloud.model.Role;
 import com.example.spring.security.cloud.model.User;
 import com.example.spring.security.cloud.service.UserService;
-
-import antlr.collections.List;
 
 @RestController
 @RequestMapping("/users")
@@ -30,7 +29,13 @@ public class UserController {
     }
 
     @PostMapping("/add")
-    void createUser(@RequestBody User user) {
+    void createUser(@RequestBody UserCreateDto userCreateDto) {
+        User user = new User();
+        user.setFirstname(userCreateDto.getFirstname());
+        user.setLastname(userCreateDto.getLastname());
+        user.setEmail(userCreateDto.getEmail());
+        user.setPassword(userCreateDto.getPassword());
+
         userService.saveUser(user);
     }
 

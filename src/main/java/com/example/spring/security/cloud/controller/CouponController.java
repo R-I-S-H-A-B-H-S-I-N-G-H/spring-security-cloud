@@ -3,6 +3,8 @@ package com.example.spring.security.cloud.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.autoconfigure.data.web.SpringDataWebProperties.Pageable;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -27,7 +29,6 @@ public class CouponController {
 
     @GetMapping("")
     public List<Coupon> getAllCoupons() {
-        // return List.of();
         return couponRepo.findAll();
     }
 
